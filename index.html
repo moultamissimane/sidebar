@@ -9,6 +9,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+<style>
+    /* .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+     */
+    /* .dropbtn:hover, .dropbtn:focus {
+      background-color: #2980B9;
+    } */
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown a:hover {background-color: #ddd;}
+    
+    .show {display: block;}
+    </style>
 
 <body class="bg-pink-300">
     <div id="mySidebar" class="sidebar ">
@@ -23,13 +63,28 @@
     </div>
 
     <div id="main">
-        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-        <h2>Collapsed Sidebar</h2>
+        <!-- <h2>Collapsed Sidebar</h2> -->
         <div class="text-white bg-black grid grid-cols-4 gap-4">
-            <div class="bg-white rounded text-black flex justify-center">
-                items center
-                <img class="w-3 h-3 flex text-center " src="/551749-200.png" alt="">
+            <div class="bg-white rounded text-black gap-4 flex justify-center">
+                <button onclick="myFunction()" class="dropbtn bg-white text-black">
+                    items center
+                </button>
+                <!-- edit this div and instead of using css use tailwind -->
+                <div id="myDropdown" class="dropdown-content hidden absolute bg-white z-99 w-20 text-black">
+                    <a class="text-black p-2" href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                  </div>
+                <img class="w-3 h-3 flex text-center mt-2" src="/551749-200.png" alt="">
             </div>
+            <div class="bg-white rounded text-black gap-4 flex justify-center">
+                items center
+                <img class="w-3 h-3 flex text-center mt-2" src="/551749-200.png" alt="">
+            </div>
+            <!-- <div class=""> -->
+            <button class="openbtn bg-white rounded text-black gap-4 flex justify-center" onclick="openNav()"> Open
+                Sidebar</button>
+            <!-- </div>  -->
         </div>
     </div>
 
@@ -46,6 +101,28 @@
             document.getElementById("main").style.marginLeft = "0";
         }
     </script>
+    <!-- for the drop down -->
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+        </script>
 
 </body>
 
